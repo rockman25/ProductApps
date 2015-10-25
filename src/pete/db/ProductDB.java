@@ -6,31 +6,45 @@
 package pete.db;
 
 import pete.biz.Product;
+import pete.biz.Book;
+import pete.biz.Software;
 
-/**
- *
- * @author schirmer
- */
 public class ProductDB {
     
     public static Product getProduct(String productCode){
         
-        Product product = new Product();
+        Product p = null;
         
         //fill the Product object with data
-        product.setCode(productCode);
-        if (productCode.equalsIgnoreCase("java")){
-            product.setPrice(57.50);
-            product.setDescription("Murach\'s Java Programming");
-        } else if (productCode.equalsIgnoreCase("jsp")){
-            product.setPrice(57.50);
-            product.setDescription("Murach\'s Java Servlets and JSP");
-        } else if (productCode.equalsIgnoreCase("mysql")){
-            product.setPrice(54.50);
-            product.setDescription("Murach\'s MySQL");
-        } else {
-            product.setDescription("Unknown");
-        }
-        return product;
+       if (productCode.equalsIgnoreCase("java")
+               || productCode.equalsIgnoreCase("jsp")
+               || productCode.equalsIgnoreCase("mysql")){
+            Book b = new Book();
+            if (productCode.equalsIgnoreCase("java")){
+                b.setCode(productCode);
+                b.setPrice(57.50);
+                b.setDescription("Murach\'s Java Programming");
+                b.setAuthor("Joel");
+            } else if (productCode.equalsIgnoreCase("jsp")){
+                b.setPrice(57.50);
+                b.setCode(productCode);
+                b.setDescription("Murach\'s Java Servlets and JSP");
+                b.setAuthor("Mike");
+            } else if (productCode.equalsIgnoreCase("mysql")){
+                b.setPrice(54.50);
+                b.setDescription("Murach\'s MySQL");
+                b.setCode(productCode);
+                b.setAuthor("Jimmy");
+            } 
+            p = b; // set Product object equal to the Book object
+       } else if (productCode.equalsIgnoreCase("netbeans")) {
+           Software s = new Software();
+           s.setCode("netbeans");
+           s.setDescription("NetBeans");
+           s.setPrice(0.00);
+           s.setVersion("8.0");
+           p = s; // set Product object equal to the SOftware object
+       }
+       return p;
     }
 }

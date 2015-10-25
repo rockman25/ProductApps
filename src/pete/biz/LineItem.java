@@ -47,4 +47,9 @@ public class LineItem {
         String totalFormatted = currency.format(total);
         return totalFormatted;
     }
+    
+    public String getQuantityFormatted() {
+        NumberFormat number = NumberFormat.getNumberInstance();
+        return number.format(quantity);
+    }
 }

@@ -16,23 +16,16 @@ public class Product {
     private String code;
     private String description;
     private double price;
+    protected static int count = 0;
     
-    public Product(){
-        this("","",0);
-    }
-    
-    public Product(String code, String description, double price){
-        this.code=code;
-        this.description=description;
-        this.price=price;
-    }
-    
+    public Product(){}
+
     public void setCode(String code){
         this.code=code;
     }
     
     public String getCode(){
-        return this.code;
+        return code;
     }
     
     public void setDescription(String description){
@@ -40,7 +33,7 @@ public class Product {
     }
     
     public String getDescription(){
-        return this.description;
+        return description;
     }
     
     public void setPrice(double price){
@@ -48,26 +41,21 @@ public class Product {
     }
     
     public double getPrice(){
-        return this.price;
+        return price;
     }
     
     public String getPriceFormatted(){
         NumberFormat currency = NumberFormat.getCurrencyInstance();
-        String priceFormatted = currency.format(this.price);
-        return priceFormatted;
+        return currency.format(price);
     }
     
-    public void printToConsole(){
-        printToConsole("|");
+    @Override
+    public String toString(){
+        return description;
     }
     
-    public void printToConsole(String separator){
-        System.out.println(code+separator+description+separator+price);
-    }
-    
-    public void printToConsole(String separator, String label){
-        System.out.print(label);
-        printToConsole(separator);
+    public static int getCount(){
+        return count;
     }
     
 }
