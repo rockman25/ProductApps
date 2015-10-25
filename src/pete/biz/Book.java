@@ -8,6 +8,7 @@ package pete.biz;
 /**
  *
  * @author schirmer
+ * updated 10/25/2015 on linux machine
  */
 public class Book extends Product {
     private String author;
